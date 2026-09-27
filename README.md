@@ -22,6 +22,28 @@ Requires Node.js 20 or newer. Run the CLI from GitHub without cloning:
 npm exec --yes --package=github:edwei06/issueformlint -- issueformlint .
 ~~~
 
+## GitHub Action
+
+Add this workflow to a repository to check issue templates in pull requests:
+
+~~~yaml
+name: Check issue forms
+on:
+  pull_request:
+    paths:
+      - '.github/ISSUE_TEMPLATE/**'
+jobs:
+  lint:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - uses: edwei06/issueformlint@v0.1.0
+~~~
+
+The action installs Node.js and the linter dependencies, then emits error annotations. Set `with.path` to check a different repository root, template directory, or single file.
+
 ## Try it from this checkout
 
 ~~~sh

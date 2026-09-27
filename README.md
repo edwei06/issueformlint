@@ -39,7 +39,7 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v7
-      - uses: edwei06/issueformlint@v0.1.0
+      - uses: edwei06/issueformlint@v0.1.1
 ~~~
 
 The action installs Node.js and the linter dependencies, then emits error annotations. Set `with.path` to check a different repository root, template directory, or single file.
@@ -75,10 +75,11 @@ The github format emits GitHub Actions error annotations. The json format contai
 - Required form keys and all six documented element types: markdown, input, textarea, dropdown, checkboxes, and upload.
 - Field types, unknown keys, duplicate IDs, labels that resolve to the same field reference, duplicate options, and invalid dropdown defaults.
 - Form names repeated across YAML and Markdown templates in the same directory.
+- `.yaml` filenames that GitHub does not document for issue forms or chooser config; use `.yml`.
 - YAML 1.1 values such as unquoted yes/no that GitHub interprets as booleans.
 - Markdown template frontmatter name/about and chooser config contact links.
 
-This is an independent preflight checker, not GitHub's internal validator. GitHub's form schema is in public preview and may change. The first release does not check whether referenced labels, assignees, issue types, or projects exist in a repository.
+This is an independent preflight checker, not GitHub's internal validator. GitHub's form schema is in public preview and may change. The tool does not check whether referenced labels, assignees, issue types, or projects exist in a repository.
 
 ## Development
 

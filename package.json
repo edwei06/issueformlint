@@ -1,6 +1,6 @@
 {
   "name": "issueformlint",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Check GitHub issue forms before they reach the default branch",
   "type": "module",
   "bin": {

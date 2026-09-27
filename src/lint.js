@@ -357,6 +357,13 @@ export function lintPath(target = '.') {
   const names = new Map();
   for (const file of files) {
     const filename = path.basename(file).toLowerCase();
+    if (filename.endsWith('.yaml')) {
+      diagnostics.push({
+        file, line: 1, column: 1, path: '',
+        code: 'unsupported-extension',
+        message: 'GitHub issue forms and chooser config use .yml files; rename this file to .yml.',
+      });
+    }
     const kind = filename === 'config.yml' || filename === 'config.yaml'
       ? 'config'
       : filename.endsWith('.md') ? 'markdown' : 'form';

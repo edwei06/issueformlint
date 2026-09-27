@@ -168,3 +168,18 @@ test('accepts empty optional lists', () => {
   const source = 'name: Bug\ndescription: Report\nlabels: []\nassignees: []\nprojects: []\nbody:\n  - type: input\n    attributes:\n      label: Version\n';
   assert.deepEqual(lintSource(source, 'sample.yml').diagnostics, []);
 });
+
+test('flags unsupported .yaml template filenames', () => {
+  const { repository, templates } = tempRepository();
+  fs.writeFileSync(path.join(templates, 'bug.yaml'), validForm);
+  fs.writeFileSync(path.join(templates, 'config.yaml'), 'blank_issues_enabled: false\n');
+  const result = lintPath(repository);
+  assert.equal(result.files.length, 2);
+  assert.deepEqual(result.diagnostics.map((item) => item.code),
+    ['unsupported-extension', 'unsupported-extension']);
+  assert.ok(result.diagnostics.every((item) => item.line === 1 && item.column === 1));
+
+  const run = spawnSync(process.execPath, [cli, repository], { encoding: 'utf8' });
+  assert.equal(run.status, 1);
+  assert.match(run.stderr, /rename this file to \.yml/);
+});

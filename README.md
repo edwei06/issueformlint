@@ -14,9 +14,15 @@ A valid YAML file can still be an invalid GitHub issue form. For example, unquot
 
 The project follows GitHub's published [issue form syntax](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms), [form element schema](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema), and [common validation errors](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/common-validation-errors-when-creating-issue-forms).
 
-## Try it from this checkout
+## Quick start
 
-Requires Node.js 20 or newer.
+Requires Node.js 20 or newer. Run the CLI from GitHub without cloning:
+
+~~~sh
+npm exec --yes --package=github:edwei06/issueformlint -- issueformlint .
+~~~
+
+## Try it from this checkout
 
 ~~~sh
 npm install

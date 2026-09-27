@@ -1,0 +1,22 @@
+{
+  "name": "issueformlint",
+  "version": "0.1.0",
+  "description": "Check GitHub issue forms before they reach the default branch",
+  "type": "module",
+  "bin": {
+    "issueformlint": "./bin/issueformlint.js"
+  },
+  "exports": {
+    ".": "./src/lint.js"
+  },
+  "files": ["bin/", "src/", "README.md", "LICENSE"],
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "check": "node --check bin/issueformlint.js && node --check src/lint.js",
+    "test": "node --test",
+    "selftest": "node bin/issueformlint.js ."
+  },
+  "keywords": ["github", "issue-forms", "linter", "cli"],
+  "license": "MIT",
+  "dependencies": {"yaml": "^2.9.1"}
+}

@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest a focused validation or CLI improvement.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: GitHub documentation or example
